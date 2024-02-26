@@ -3,6 +3,7 @@ import bgImage from "./assets/background.jpg";
 
 function App() {
   const [firstNumber, setFirstNumber] = useState("");
+  const [secondtNumber, setSecondNumber] = useState("");
   return (
     <div
       className="min-h-screen min-w-full bg-center bg-no-repeat bg-cover flex justify-center items-center"
@@ -18,10 +19,16 @@ function App() {
           <input
             className="px-4 py-2 border border-black w-full rounded-sm"
             placeholder="enter first number"
+            onChange={(e) => {
+              setFirstNumber(e.target.value || "");
+            }}
           />
-          <div className="rounded-full border border-gray-500 p-4 h-32 w-32">
-            jjjjjjjj
+          <div className="flex justify-center">
+            <div className="rounded-full border border-gray-500 p-4 h-32 w-32  ">
+              <div className="min-h-px w-full bg-gray-900" />
+            </div>
           </div>
+
           <input
             className="px-4 py-2 border border-black w-full rounded-sm"
             placeholder="enter second number"
