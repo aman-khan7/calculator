@@ -1,6 +1,8 @@
+import { useState } from "react";
 import bgImage from "./assets/background.jpg";
 
 function App() {
+  const [firstNumber, setFirstNumber] = useState("");
   return (
     <div
       className="min-h-screen min-w-full bg-center bg-no-repeat bg-cover flex justify-center items-center"
