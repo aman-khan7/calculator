@@ -4,6 +4,7 @@ import bgImage from "./assets/background.jpg";
 function App() {
   const [firstNumber, setFirstNumber] = useState("");
   const [secondtNumber, setSecondNumber] = useState("");
+  const [operator, setOperator] = useState("");
   return (
     <div
       className="min-h-screen min-w-full bg-center bg-no-repeat bg-cover flex justify-center items-center"
@@ -24,16 +25,58 @@ function App() {
             }}
           />
           <div className="flex justify-center">
-            <div className="rounded-full border border-gray-500 p-4 h-32 w-32  ">
-              <div className="min-h-px w-full bg-gray-900" />
+            <div className="rounded-full border border-gray-500  p-1 h-32 w-32  grid grid-cols-2 rotate-45">
+              <div className="flex justify-center items-center border-r border-b border-black/40">
+                <div
+                  className={`${
+                    operator === "+"
+                      ? "bg-blue-700 text-white"
+                      : "hover:bg-gray-700/50"
+                  }  rounded-tl-full text-2xl cursor-pointer w-full h-full flex justify-center items-center`}
+                  onClick={() => {
+                    setOperator("+");
+                  }}
+                >
+                  <span className="-rotate-45">+</span>
+                </div>
+              </div>
+
+              <div className="flex justify-center items-center border-l border-b border-black/40">
+                <div
+                  className={`${
+                    operator === "-"
+                      ? "bg-blue-700 text-white"
+                      : "hover:bg-gray-700/50"
+                  }  text-2xl  rounded-tr-full  cursor-pointer w-full h-full flex justify-center items-center`}
+                  onClick={() => {
+                    setOperator("-");
+                  }}
+                >
+                  <span className="-rotate-45">-</span>
+                </div>
+              </div>
+              <div className="flex justify-center items-center border-t border-r border-black/40">
+                <div className="text-2xl hover:bg-gray-700/50  rounded-bl-full cursor-pointer -  w-full h-full flex justify-center items-center">
+                  <span className="-rotate-45">*</span>
+                </div>
+              </div>
+              <div className="flex justify-center items-center border-t border-l border-black/40">
+                <div className="text-2xl hover:bg-gray-700/50 rounded-br-full  cursor-pointer -  w-full h-full flex justify-center items-center">
+                  <span className="-rotate-45">÷</span>
+                </div>
+              </div>
             </div>
           </div>
 
           <input
             className="px-4 py-2 border border-black w-full rounded-sm"
             placeholder="enter second number"
+            onChange={(e) => {
+              setSecondNumber(e.target.value || "");
+            }}
           />
         </div>
+        <button>done</button>
       </div>
     </div>
   );
