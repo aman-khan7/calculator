@@ -5,6 +5,7 @@ function App() {
   const [firstNumber, setFirstNumber] = useState("");
   const [secondtNumber, setSecondNumber] = useState("");
   const [operator, setOperator] = useState("");
+  const [result, setResult] = useState("");
   return (
     <div
       className="min-h-screen min-w-full bg-center bg-no-repeat bg-cover flex justify-center items-center"
@@ -13,8 +14,8 @@ function App() {
       }}
     >
       <div className="bg-white min-w-[400px] p-4 rounded-lg shadow-2xl flex flex-col gap-4 border border-gray-600">
-        <div className="border border-green-950 px-6 py-4 rounded-md bg-gray-500/50">
-          jji
+        <div className="flex justify-between border border-green-950 px-6 py-4 rounded-md bg-gray-500/50">
+          <span>result</span> <span>{result}</span>
         </div>
         <div className="flex flex-col gap-4">
           <input
@@ -94,7 +95,25 @@ function App() {
             }}
           />
         </div>
-        <button>done</button>
+        <button
+          onClick={() => {
+            const a = Number(firstNumber || 0);
+            const b = Number(secondtNumber || 0);
+
+            if (operator === "+") {
+              setResult(String(a + b));
+            } else if (operator === "-") {
+              setResult(String(a - b));
+            } else if (operator === "*") {
+              setResult(String(a * b));
+            } else {
+              setResult(String(a / b));
+            }
+          }}
+          className="bg-black py-4 text-white uppercase"
+        >
+          done
+        </button>
       </div>
     </div>
   );
