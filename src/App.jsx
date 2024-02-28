@@ -56,12 +56,30 @@ function App() {
                 </div>
               </div>
               <div className="flex justify-center items-center border-t border-r border-black/40">
-                <div className="text-2xl hover:bg-gray-700/50  rounded-bl-full cursor-pointer -  w-full h-full flex justify-center items-center">
+                <div
+                  className={`${
+                    operator === "*"
+                      ? "bg-blue-700 text-white"
+                      : "hover:bg-gray-700/50"
+                  } text-2xl   rounded-bl-full cursor-pointer -  w-full h-full flex justify-center items-center`}
+                  onClick={() => {
+                    setOperator("*");
+                  }}
+                >
                   <span className="-rotate-45">*</span>
                 </div>
               </div>
               <div className="flex justify-center items-center border-t border-l border-black/40">
-                <div className="text-2xl hover:bg-gray-700/50 rounded-br-full  cursor-pointer -  w-full h-full flex justify-center items-center">
+                <div
+                  className={`${
+                    operator === "÷"
+                      ? "bg-blue-700 text-white"
+                      : "hover:bg-gray-700/50"
+                  } text-2xl  rounded-br-full  cursor-pointer -  w-full h-full flex justify-center items-center`}
+                  onClick={() => {
+                    setOperator("÷");
+                  }}
+                >
                   <span className="-rotate-45">÷</span>
                 </div>
               </div>
