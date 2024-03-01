@@ -1,6 +1,29 @@
 import { useState } from "react";
 import bgImage from "./assets/background.jpg";
 
+const signs = [
+  {
+    symbol: "+",
+    border: "border-r border-b",
+    rounded: "rounded-tl-full",
+  },
+  {
+    symbol: "-",
+    border: "border-l border-b",
+    rounded: "rounded-tr-full",
+  },
+  {
+    symbol: "*",
+    border: "border-t border-r",
+    rounded: "rounded-bl-full",
+  },
+  {
+    symbol: "÷",
+    border: "border-t border-l",
+    rounded: "rounded-br-full",
+  },
+];
+
 function App() {
   const [firstNumber, setFirstNumber] = useState("");
   const [secondtNumber, setSecondNumber] = useState("");
@@ -27,63 +50,29 @@ function App() {
           />
           <div className="flex justify-center">
             <div className="rounded-full border border-gray-500  p-1 h-32 w-32  grid grid-cols-2 rotate-45">
-              <div className="flex justify-center items-center border-r border-b border-black/40">
-                <div
-                  className={`${
-                    operator === "+"
-                      ? "bg-blue-700 text-white"
-                      : "hover:bg-gray-700/50"
-                  }  rounded-tl-full text-2xl cursor-pointer w-full h-full flex justify-center items-center`}
-                  onClick={() => {
-                    setOperator("+");
-                  }}
-                >
-                  <span className="-rotate-45">+</span>
-                </div>
-              </div>
-
-              <div className="flex justify-center items-center border-l border-b border-black/40">
-                <div
-                  className={`${
-                    operator === "-"
-                      ? "bg-blue-700 text-white"
-                      : "hover:bg-gray-700/50"
-                  }  text-2xl  rounded-tr-full  cursor-pointer w-full h-full flex justify-center items-center`}
-                  onClick={() => {
-                    setOperator("-");
-                  }}
-                >
-                  <span className="-rotate-45">-</span>
-                </div>
-              </div>
-              <div className="flex justify-center items-center border-t border-r border-black/40">
-                <div
-                  className={`${
-                    operator === "*"
-                      ? "bg-blue-700 text-white"
-                      : "hover:bg-gray-700/50"
-                  } text-2xl   rounded-bl-full cursor-pointer -  w-full h-full flex justify-center items-center`}
-                  onClick={() => {
-                    setOperator("*");
-                  }}
-                >
-                  <span className="-rotate-45">*</span>
-                </div>
-              </div>
-              <div className="flex justify-center items-center border-t border-l border-black/40">
-                <div
-                  className={`${
-                    operator === "÷"
-                      ? "bg-blue-700 text-white"
-                      : "hover:bg-gray-700/50"
-                  } text-2xl  rounded-br-full  cursor-pointer -  w-full h-full flex justify-center items-center`}
-                  onClick={() => {
-                    setOperator("÷");
-                  }}
-                >
-                  <span className="-rotate-45">÷</span>
-                </div>
-              </div>
+              {signs.map((sign) => {
+                return (
+                  <div
+                    key={sign.symbol}
+                    className={`flex justify-center items-center ${sign.border} border-black/40`}
+                  >
+                    <div
+                      className={`${
+                        operator === sign.symbol
+                          ? "bg-blue-700 text-white"
+                          : "hover:bg-green-700/50"
+                      }  ${
+                        sign.rounded
+                      } text-2xl cursor-pointer w-full h-full flex justify-center items-center`}
+                      onClick={() => {
+                        setOperator(sign.symbol);
+                      }}
+                    >
+                      <span className="-rotate-45">{sign.symbol}</span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
